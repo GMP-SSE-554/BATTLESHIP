@@ -1,4 +1,5 @@
 ﻿using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -14,7 +15,21 @@ namespace Battleship
         public MainPage()
         {
             InitializeComponent();
-            SetupBoard();            
+            PerformAdditionalViewInitialization();
+            SetupBoard();
+        }
+
+        /// <summary>
+        /// Perform additional view initializations. Would prefer to override 'InitializeComponent(),'
+        /// but it isn't known how to do that as of yet.
+        /// </summary>
+        public void PerformAdditionalViewInitialization()
+        {
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Windows.Foundation.Size
+            {
+                Width = 500,
+                Height = 500
+            });
         }
 
         /// <summary>
@@ -36,11 +51,22 @@ namespace Battleship
                     rect.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Stretch);
                     rect.SetValue(VerticalAlignmentProperty, VerticalAlignment.Stretch);
                     rect.StrokeThickness = 1;
-                    rect.Stroke = new SolidColorBrush(Colors.Black);
-                    rect.Fill = new SolidColorBrush(Colors.LightGray);
+                    rect.Stroke = new SolidColorBrush(Colors.SlateGray);
+                    rect.Fill = new SolidColorBrush(Colors.FloralWhite);
                     Board.Children.Add(rect);
                 }
             }
+            
+        }
+
+        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
+        {
+            SpView.IsPaneOpen = !SpView.IsPaneOpen;
+        }
+
+        private void SideMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }
