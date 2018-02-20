@@ -1,5 +1,4 @@
 ﻿using Windows.UI;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -10,30 +9,19 @@ namespace Battleship
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class GameView : Page
     {
-        public MainPage()
+        /// <summary>
+        /// Creates an instance of the GameView. This view contains the main battleship game.
+        /// </summary>
+        public GameView()
         {
             InitializeComponent();
-            PerformAdditionalViewInitialization();
             SetupBoard();
         }
 
         /// <summary>
-        /// Perform additional view initializations. Would prefer to override 'InitializeComponent(),'
-        /// but it isn't known how to do that as of yet.
-        /// </summary>
-        public void PerformAdditionalViewInitialization()
-        {
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Windows.Foundation.Size
-            {
-                Width = 500,
-                Height = 500
-            });
-        }
-
-        /// <summary>
-        /// Sets up the battleship board with tiles and other information.
+        /// Sets up the battleship board with tiles and other information (TBD).
         /// </summary>
         public void SetupBoard()
         {
@@ -50,23 +38,12 @@ namespace Battleship
                     rect.SetValue(Grid.ColumnProperty, j);
                     rect.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Stretch);
                     rect.SetValue(VerticalAlignmentProperty, VerticalAlignment.Stretch);
-                    rect.StrokeThickness = 1;
                     rect.Stroke = new SolidColorBrush(Colors.SlateGray);
                     rect.Fill = new SolidColorBrush(Colors.FloralWhite);
+                    rect.StrokeThickness = 1;
                     Board.Children.Add(rect);
                 }
             }
-            
-        }
-
-        private void HamburgerButton_Click(object sender, RoutedEventArgs e)
-        {
-            SpView.IsPaneOpen = !SpView.IsPaneOpen;
-        }
-
-        private void SideMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
