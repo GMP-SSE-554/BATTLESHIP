@@ -5,13 +5,13 @@ namespace Battleship
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class HelpView : Page
+    public sealed partial class ScoreboardView : Page
     {
         /// <summary>
-        /// Creates an instance of the HelpView. This view contains instructions on how to
-        /// play the game, Battleship.
+        /// Initializes a new instance of the <see cref="ScoreboardView"/> class.
+        /// This contains the scoreboard of the battleship game.
         /// </summary>
-        public HelpView()
+        public ScoreboardView()
         {
             InitializeComponent();
         }

@@ -95,17 +95,35 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\ShipModel.cs" />
-    <Compile Include="Service\Implementation\ShipService.cs" />
-    <Compile Include="Service\Interface\IShipService.cs" />
-    <Compile Include="ViewModel\ShipViewModel.cs" />
-    <Compile Include="View\HelpView.xaml.cs">
+    <Compile Include="Constants\NumericalConstants.cs" />
+    <Compile Include="Constants\Strings.cs" />
+    <Compile Include="Models\Board.cs" />
+    <Compile Include="Models\Computer.cs" />
+    <Compile Include="Models\Instruction.cs" />
+    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\Scoreboard.cs" />
+    <Compile Include="Models\Ship.cs" />
+    <Compile Include="Models\Tile.cs" />
+    <Compile Include="Services\Implementation\BoardService.cs" />
+    <Compile Include="Services\Implementation\HelpService.cs" />
+    <Compile Include="Services\Interface\IBoardService.cs" />
+    <Compile Include="Services\Interface\IHelpService.cs" />
+    <Compile Include="ViewModels\BoardViewModel.cs" />
+    <Compile Include="ViewModels\InstructionViewModel.cs" />
+    <Compile Include="ViewModels\TileViewModel.cs" />
+    <Compile Include="Views\BoardView.xaml.cs">
+      <DependentUpon>BoardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScoreboardView.xaml.cs">
+      <DependentUpon>ScoreboardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HelpView.xaml.cs">
       <DependentUpon>HelpView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\GameView.xaml.cs">
+    <Compile Include="Views\GameView.xaml.cs">
       <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainPage.xaml.cs">
+    <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -131,15 +149,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="View\HelpView.xaml">
+    <Page Include="Views\BoardView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\GameView.xaml">
+    <Page Include="Views\ScoreboardView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="View\MainPage.xaml">
+    <Page Include="Views\HelpView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GameView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

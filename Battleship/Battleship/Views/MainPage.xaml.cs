@@ -12,7 +12,8 @@ namespace Battleship
         ListBoxItem prevSelected;
 
         /// <summary>
-        /// Creates an instance of the MainPage. This view contains the hamburger menu.
+        /// Initializes a new instance of the <see cref="MainPage"/> class.
+        /// This contains the hamburger menu and status bar.
         /// </summary>
         public MainPage()
         {

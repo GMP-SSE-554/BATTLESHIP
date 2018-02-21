@@ -1,4 +1,5 @@
-﻿using Windows.UI;
+﻿using Battleship.ViewModels;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media;
@@ -9,28 +10,31 @@ namespace Battleship
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class GameView : Page
+    public sealed partial class BoardView : Page
     {
+        BoardViewModel ViewModel { get; } = new BoardViewModel((App.Current as App).BoardService);
+
         /// <summary>
-        /// Creates an instance of the GameView. This view contains the main battleship game.
+        /// Initializes a new instance of the <see cref="BoardView"/> class.
+        /// This contains the board of the battlship game.
         /// </summary>
-        public GameView()
+        public BoardView()
         {
             InitializeComponent();
             SetupBoard();
         }
 
         /// <summary>
-        /// Sets up the battleship board with tiles and other information (TBD).
+        /// Sets up the battleship board with tiles and performs addtional bindings.
         /// </summary>
-        public void SetupBoard()
+        void SetupBoard()
         {
-            var rows = Board.RowDefinitions;
-            var cols = Board.ColumnDefinitions;
-            for (var i = 0; i < rows.Count; i++)
+            for (var i = 0; i < ViewModel.NumRows; i++)
             {
-                for (var j = 0; j < cols.Count; j++)
+                Board.RowDefinitions.Add(new RowDefinition());
+                for (var j = 0; j < ViewModel.NumColumns; j++)
                 {
+                    if (i == 0) Board.ColumnDefinitions.Add(new ColumnDefinition());
                     // TODO: create binding/add listener to each rect.
                     // Maybe give name.
                     var rect = new Rectangle();
@@ -41,6 +45,7 @@ namespace Battleship
                     rect.Stroke = new SolidColorBrush(Colors.SlateGray);
                     rect.Fill = new SolidColorBrush(Colors.FloralWhite);
                     rect.StrokeThickness = 1;
+
                     Board.Children.Add(rect);
                 }
             }

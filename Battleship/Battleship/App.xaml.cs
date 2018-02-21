@@ -4,6 +4,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using Battleship.Services;
 
 namespace Battleship
 {
@@ -12,6 +13,14 @@ namespace Battleship
     /// </summary>
     sealed partial class App : Application
     {
+        // The following service declarations and initializations allow for dependency injection
+        // in the view models. This is essentially the singleton pattern, however the services
+        // can be used outside of this pattern if desired.
+        BoardService _boardService;
+        HelpService _helpService;
+        public BoardService BoardService => _boardService ?? (_boardService = new BoardService());
+        public HelpService HelpService => _helpService ?? (_helpService = new HelpService());
+
         /// <summary>
         /// Initializes the singleton application object. This is the first line of authored code
         /// executed, and as such is the logical equivalent of main() or WinMain().

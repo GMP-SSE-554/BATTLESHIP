@@ -1,0 +1,41 @@
+﻿<Page x:Class="Battleship.BoardView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <RelativePanel x:Name="BoardPanel" 
+                               Grid.Column="0" 
+                               Margin="44,0,0,0">
+            <TextBlock x:Name="GameTitle"
+                               Text="Battleship Game Board"
+                               FontSize="20"
+                               Margin="0,10,0,0"
+                               Height="30"
+                               RelativePanel.AlignTopWithPanel="True" 
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <Viewbox x:Name="BoardBox"
+                             Margin="25,50,25,50"
+                             Stretch="Uniform"
+                             RelativePanel.AlignLeftWithPanel="True"
+                             RelativePanel.AlignTopWith="GameTitle"
+                             RelativePanel.AlignRightWithPanel="True"
+                             RelativePanel.AlignBottomWithPanel="True">
+                <Grid x:Name="Board"
+                              MinWidth="500"
+                              MinHeight="500"
+                              BorderBrush="SlateGray"
+                              BorderThickness="1"/>
+            </Viewbox>
+            <TextBlock x:Name="UserNotifications"
+                               Text="Placeholder to be binded - Actions, win message, etc."
+                               FontSize="20"
+                               Margin="0,0,0,10"
+                               Height ="30"
+                               RelativePanel.AlignBottomWithPanel="True"
+                               RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+        </RelativePanel>
+    </Grid>
+</Page>
