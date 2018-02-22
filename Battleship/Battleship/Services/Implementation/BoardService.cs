@@ -1,5 +1,7 @@
 ﻿using Battleship.Constants;
 using Battleship.Models;
+using Windows.UI;
+using Windows.UI.Xaml.Media;
 
 namespace Battleship.Services
 {
@@ -17,7 +19,9 @@ namespace Battleship.Services
                 {
                     board.Tiles.Add(new Tile() {
                         Row = i,
-                        Column = j
+                        Column = j,
+                        FillColor = new SolidColorBrush(Colors.FloralWhite),
+                        BorderColor = new SolidColorBrush(Colors.SlateGray)
                     });
                 }
             }

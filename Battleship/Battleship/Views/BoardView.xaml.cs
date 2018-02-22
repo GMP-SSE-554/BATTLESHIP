@@ -1,7 +1,9 @@
 ﻿using Battleship.ViewModels;
+using System.Linq;
 using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Shapes;
 
@@ -35,17 +37,17 @@ namespace Battleship
                 for (var j = 0; j < ViewModel.NumColumns; j++)
                 {
                     if (i == 0) Board.ColumnDefinitions.Add(new ColumnDefinition());
-                    // TODO: create binding/add listener to each rect.
-                    // Maybe give name.
-                    var rect = new Rectangle();
+                    var rect = new Rectangle { StrokeThickness = 1 };
                     rect.SetValue(Grid.RowProperty, i);
                     rect.SetValue(Grid.ColumnProperty, j);
                     rect.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Stretch);
                     rect.SetValue(VerticalAlignmentProperty, VerticalAlignment.Stretch);
-                    rect.Stroke = new SolidColorBrush(Colors.SlateGray);
-                    rect.Fill = new SolidColorBrush(Colors.FloralWhite);
-                    rect.StrokeThickness = 1;
 
+                    var tileSource = ViewModel.Tiles.Where(e => e.Row.Equals(i) && e.Column.Equals(j)).First();
+                    Binding fillColorBinding = new Binding { Source = tileSource.FillColor };
+                    Binding borderColorBinding = new Binding { Source = tileSource.BorderColor };
+                    rect.SetBinding(Shape.FillProperty, fillColorBinding);
+                    rect.SetBinding(Shape.StrokeProperty, borderColorBinding);
                     Board.Children.Add(rect);
                 }
             }

@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Windows.UI;
+using Windows.UI.Xaml.Media;
 
 namespace Battleship.ViewModels
 {
@@ -38,12 +39,12 @@ namespace Battleship.ViewModels
             }
         }
         
-        public Color Color
+        public SolidColorBrush FillColor
         {
-            get { return _tile.Color; }
+            get { return _tile.FillColor; }
             set
             {
-                _tile.Color = value;
+                _tile.FillColor = value;
                 OnPropertyChanged();
             }
         }
