@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Battleship.Models
 {
@@ -18,7 +19,6 @@ namespace Battleship.Models
             set { _numColumns = value; }
         }
 
-        public ObservableCollection<Tile> Tiles =
-            new ObservableCollection<Tile>();
+        public List<Tile> Tiles = new List<Tile>();
     }
 }

@@ -1,11 +1,8 @@
 ﻿using Battleship.ViewModels;
 using System.Linq;
-using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Shapes;
 
 namespace Battleship
 {
@@ -23,6 +20,7 @@ namespace Battleship
         public BoardView()
         {
             InitializeComponent();
+            DataContext = ViewModel;
             SetupBoard();
         }
 
@@ -33,22 +31,26 @@ namespace Battleship
         {
             for (var i = 0; i < ViewModel.NumRows; i++)
             {
-                Board.RowDefinitions.Add(new RowDefinition());
                 for (var j = 0; j < ViewModel.NumColumns; j++)
                 {
-                    if (i == 0) Board.ColumnDefinitions.Add(new ColumnDefinition());
-                    var rect = new Rectangle { StrokeThickness = 1 };
-                    rect.SetValue(Grid.RowProperty, i);
-                    rect.SetValue(Grid.ColumnProperty, j);
-                    rect.SetValue(HorizontalAlignmentProperty, HorizontalAlignment.Stretch);
-                    rect.SetValue(VerticalAlignmentProperty, VerticalAlignment.Stretch);
+                    // Creating tile container for command functionality.
+                    var tile = new Button();
+                    tile.SetValue(Grid.RowProperty, i);
+                    tile.SetValue(Grid.ColumnProperty, j);
+                    tile.HorizontalAlignment = HorizontalAlignment.Stretch;
+                    tile.VerticalAlignment = VerticalAlignment.Stretch;
+                    tile.BorderThickness = new Thickness { Left = 1, Top = 1, Right = 1, Bottom = 1 };
 
+                    // Binding tile properties.
                     var tileSource = ViewModel.Tiles.Where(e => e.Row.Equals(i) && e.Column.Equals(j)).First();
-                    Binding fillColorBinding = new Binding { Source = tileSource.FillColor };
-                    Binding borderColorBinding = new Binding { Source = tileSource.BorderColor };
-                    rect.SetBinding(Shape.FillProperty, fillColorBinding);
-                    rect.SetBinding(Shape.StrokeProperty, borderColorBinding);
-                    Board.Children.Add(rect);
+                    tile.SetBinding(Button.DataContextProperty, new Binding { Source = tileSource });
+                    tile.SetBinding(Button.BackgroundProperty, new Binding { Source = ((TileViewModel)tile.DataContext).FillColor });
+                    tile.SetBinding(Button.BorderBrushProperty, new Binding { Source = ((TileViewModel)tile.DataContext).BorderColor });
+                    tile.SetBinding(Button.CommandProperty, new Binding { Source = ((TileViewModel)tile.DataContext).ChangeFill });
+                    tile.CommandParameter = tileSource;
+
+                    // Adding tile to parent view.
+                    Board.Children.Add(tile);
                 }
             }
         }

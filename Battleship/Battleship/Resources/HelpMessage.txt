@@ -1,0 +1,14 @@
+﻿The game is played as explained in the following steps:
+1. Place your ships in the order they appear on the scoreboard from top to bottom.
+	a. Right click to change the orientation of the ship.
+	b. Left click to place the ship's root tile in specified tile.
+	c. Currently, once a ship is placed, it can not be replaced.
+2. After all ships are placed, select tiles to try to sink the opponent's ships before the opponent sinks all of your ships.
+3. Once all ships for one player have been destoryed, the other player wins the game.
+
+Notes on tile colors:
+1. All tiles are initially filled in with Floral White and outlined with Slate Gray.
+2. Tiles containing player ships that have NOT been hit by the opponent are filled in with COLOR.
+3. Tiles containing player ships that have been hit by the opponent are filled in with COLOR.
+4. Tiles selected by the player that do NOT contain enemy ships are outlined with COLOR.
+5. Tiles selected by the player that do contain enemy ships are outlined with COLOR.

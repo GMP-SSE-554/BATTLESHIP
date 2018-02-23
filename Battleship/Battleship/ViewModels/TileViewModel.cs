@@ -1,6 +1,7 @@
 ﻿using Battleship.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 
@@ -10,9 +11,9 @@ namespace Battleship.ViewModels
     {
         Tile _tile;
 
-        public TileViewModel()
+        public TileViewModel(Tile tile)
         {
-            _tile = new Tile();
+            _tile = tile;
         }
         
         public int Row { get { return _tile.Row; } }
@@ -48,6 +49,27 @@ namespace Battleship.ViewModels
                 OnPropertyChanged();
             }
         }
+        
+        public SolidColorBrush BorderColor
+        {
+            get { return _tile.BorderColor; }
+            set
+            {
+                _tile.BorderColor = value;
+                OnPropertyChanged();
+            }
+        }
+
+        ICommand _changeFill;
+        public ICommand ChangeFill
+        {
+            get { return _changeFill ?? (_changeFill = new Command(p => true, a => Change(a))); }
+        }
+
+        void Change(object tile)
+        {
+            FillColor = new SolidColorBrush(Colors.Red);
+        }
 
         /// <summary>
         /// Notifies listeners of property change.
@@ -55,7 +77,7 @@ namespace Battleship.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
