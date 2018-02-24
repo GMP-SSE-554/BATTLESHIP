@@ -14,6 +14,7 @@ namespace Battleship
         public GameView()
         {
             InitializeComponent();
+            NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Required;
             CurrentBoardView.Navigate(typeof(BoardView));
             CurrentScoreboardView.Navigate(typeof(ScoreboardView));
         }

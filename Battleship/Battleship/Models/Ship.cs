@@ -1,8 +1,24 @@
 ﻿
+using System;
+using Windows.UI.Xaml.Media;
+
 namespace Battleship.Models
 {
     public class Ship
     {
+        public Ship(ShipType shipType)
+        {
+            this.Name = Enum.GetName(typeof(ShipType), (int)shipType);
+            this.Length = (int)shipType;
+        }
+
+        string _name;
+        public string Name
+        {
+            get { return _name; }
+            set { _name = value; }
+        }
+
         Tile _rootTile;
         public Tile RootTile
         {
@@ -29,6 +45,13 @@ namespace Battleship.Models
         {
             get { return _isDestroyed; }
             set { _isDestroyed = value; }
+        }
+
+        SolidColorBrush _color;
+        public SolidColorBrush Color
+        {
+            get { return _color; }
+            set { _color = value; }
         }
     }
 }

@@ -51,7 +51,7 @@
             <Grid x:Name="MainView">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
-                    <RowDefinition Height="300"/>
+                    <RowDefinition Height="325"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>

@@ -101,15 +101,18 @@
     <Compile Include="Models\Computer.cs" />
     <Compile Include="Models\Instruction.cs" />
     <Compile Include="Models\Player.cs" />
-    <Compile Include="Models\Scoreboard.cs" />
     <Compile Include="Models\Ship.cs" />
+    <Compile Include="Models\ShipType.cs" />
     <Compile Include="Models\Tile.cs" />
     <Compile Include="Services\Implementation\BoardService.cs" />
     <Compile Include="Services\Implementation\HelpService.cs" />
+    <Compile Include="Services\Implementation\ShipService.cs" />
     <Compile Include="Services\Interface\IBoardService.cs" />
     <Compile Include="Services\Interface\IHelpService.cs" />
+    <Compile Include="Services\Interface\IShipService.cs" />
     <Compile Include="ViewModels\BoardViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
+    <Compile Include="ViewModels\ScoreboardViewModel.cs" />
     <Compile Include="ViewModels\TileViewModel.cs" />
     <Compile Include="Views\BoardView.xaml.cs">
       <DependentUpon>BoardView.xaml</DependentUpon>

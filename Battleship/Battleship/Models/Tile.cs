@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Windows.UI;
-using Windows.UI.Xaml.Media;
+﻿using Windows.UI.Xaml.Media;
 
 namespace Battleship.Models
 {
