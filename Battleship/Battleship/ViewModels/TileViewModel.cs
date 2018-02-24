@@ -63,19 +63,22 @@ namespace Battleship.ViewModels
         ICommand _changeFill;
         public ICommand ChangeFill
         {
-            get { return _changeFill ?? (_changeFill = new Command(p => true, a => Change(a))); }
+            get { return _changeFill ?? (_changeFill = new Command(p => true, a => Change())); }
         }
 
-        void Change(object tile)
+        /// <summary>
+        /// Changes color of tile. Currently set up to demo binding. Needs to be fleshed out.
+        /// </summary>
+        void Change()
         {
-            FillColor = new SolidColorBrush(Colors.Red);
+            this.FillColor = new SolidColorBrush(Colors.Red);
         }
 
         /// <summary>
         /// Notifies listeners of property change.
         /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

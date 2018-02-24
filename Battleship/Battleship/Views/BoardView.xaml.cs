@@ -35,6 +35,7 @@ namespace Battleship
                 {
                     // Creating tile container for command functionality.
                     var tile = new Button();
+                    if (i == 0 && j == 0) tile.Name = "tile";
                     tile.SetValue(Grid.RowProperty, i);
                     tile.SetValue(Grid.ColumnProperty, j);
                     tile.HorizontalAlignment = HorizontalAlignment.Stretch;
@@ -44,10 +45,9 @@ namespace Battleship
                     // Binding tile properties.
                     var tileSource = ViewModel.Tiles.Where(e => e.Row.Equals(i) && e.Column.Equals(j)).First();
                     tile.SetBinding(Button.DataContextProperty, new Binding { Source = tileSource });
-                    tile.SetBinding(Button.BackgroundProperty, new Binding { Source = ((TileViewModel)tile.DataContext).FillColor });
-                    tile.SetBinding(Button.BorderBrushProperty, new Binding { Source = ((TileViewModel)tile.DataContext).BorderColor });
-                    tile.SetBinding(Button.CommandProperty, new Binding { Source = ((TileViewModel)tile.DataContext).ChangeFill });
-                    tile.CommandParameter = tileSource;
+                    tile.SetBinding(Button.BackgroundProperty, new Binding { Path = new PropertyPath(nameof(tileSource.FillColor)) });
+                    tile.SetBinding(Button.BorderBrushProperty, new Binding { Path = new PropertyPath(nameof(tileSource.BorderColor)) });
+                    tile.SetBinding(Button.CommandProperty, new Binding { Path = new PropertyPath(nameof(tileSource.ChangeFill)) });
 
                     // Adding tile to parent view.
                     Board.Children.Add(tile);
