@@ -26,6 +26,18 @@ namespace Battleship.Models
             set { _rootTile = value; }
         }
 
+        int _row;
+        public int Row
+        {
+            get { return _rootTile.Row; }
+        }
+
+        int _column;
+        public int Column
+        {
+            get { return _rootTile.Column; }
+        }
+
         int _length;
         public int Length
         {
@@ -38,6 +50,13 @@ namespace Battleship.Models
         {
             get { return _isHorizontal; }
             set { _isHorizontal = value; }
+        }
+
+        int _remainingHealth;
+        public int RemainingHealth
+        {
+            get { return _remainingHealth; }
+            set { _remainingHealth = value; }
         }
 
         bool _isDestroyed;

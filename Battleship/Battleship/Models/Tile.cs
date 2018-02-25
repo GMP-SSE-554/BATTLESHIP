@@ -32,15 +32,15 @@ namespace Battleship.Models
             set { _isChecked = value; }
         }
 
-        SolidColorBrush _fillColor;
-        public SolidColorBrush FillColor
+        Windows.UI.Color _fillColor;
+        public Windows.UI.Color FillColor
         {
             get { return _fillColor; }
             set { _fillColor = value; }
         }
 
-        SolidColorBrush _borderColor;
-        public SolidColorBrush BorderColor
+        Windows.UI.Color _borderColor;
+        public Windows.UI.Color BorderColor
         {
             get { return _borderColor; }
             set { _borderColor = value; }

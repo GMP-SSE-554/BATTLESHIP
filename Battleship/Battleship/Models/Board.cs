@@ -19,5 +19,10 @@ namespace Battleship.Models
         }
 
         public List<Tile> Tiles = new List<Tile>();
+
+        public Tile tileAt(int row, int column)
+        {
+            return Tiles.Find(tile => tile.Column == column && tile.Row == row);
+        }
     }
 }
