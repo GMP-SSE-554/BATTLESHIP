@@ -42,20 +42,20 @@ namespace Battleship.ViewModels
         
         public SolidColorBrush FillColor
         {
-            get { return _tile.FillColor; }
+            get { return new SolidColorBrush(_tile.FillColor); }
             set
             {
-                _tile.FillColor = value;
+                _tile.FillColor = value.Color;
                 OnPropertyChanged();
             }
         }
         
         public SolidColorBrush BorderColor
         {
-            get { return _tile.BorderColor; }
+            get { return new SolidColorBrush(_tile.BorderColor); }
             set
             {
-                _tile.BorderColor = value;
+                _tile.BorderColor = value.Color;
                 OnPropertyChanged();
             }
         }
