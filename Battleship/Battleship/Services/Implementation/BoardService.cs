@@ -20,6 +20,7 @@ namespace Battleship.Services
                     board.Tiles.Add(new Tile() {
                         Row = i,
                         Column = j,
+                        Board = board,
                         FillColor = Colors.FloralWhite,
                         BorderColor = Colors.SlateGray
                     });

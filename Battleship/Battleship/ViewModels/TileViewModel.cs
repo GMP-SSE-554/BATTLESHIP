@@ -1,4 +1,5 @@
 ﻿using Battleship.Models;
+using Battleship.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -10,10 +11,12 @@ namespace Battleship.ViewModels
     public class TileViewModel : INotifyPropertyChanged
     {
         Tile _tile;
-
+        TileService _tileService;
+        
         public TileViewModel(Tile tile)
         {
             _tile = tile;
+            _tileService = new TileService();
         }
 
         public int Row { get { return _tile.Row; } }
@@ -63,6 +66,18 @@ namespace Battleship.ViewModels
             set
             {
                 _tile.BorderColor = value.Color;
+                OnPropertyChanged();
+            }
+        }
+
+        bool _isMousedOver;
+        public bool IsMousedOver
+        {
+            get { return _isMousedOver; }
+            set
+            {
+                _isMousedOver = value;
+                _tileService.UpdatePreview();
                 OnPropertyChanged();
             }
         }
