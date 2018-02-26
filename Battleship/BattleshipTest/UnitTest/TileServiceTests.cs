@@ -26,12 +26,12 @@ namespace BattleshipTest
 
             tileService.PlaceShip(board, destroyer);
 
-            Assert.IsTrue(board.tileAt(2, 2).ContainsShip);
-            Assert.IsTrue(board.tileAt(2, 3).ContainsShip);
-            Assert.IsFalse(board.tileAt(2, 4).ContainsShip);
-            Assert.IsFalse(board.tileAt(2, 1).ContainsShip);
-            Assert.IsFalse(board.tileAt(1, 2).ContainsShip);
-            Assert.IsFalse(board.tileAt(3, 2).ContainsShip);
+            Assert.IsTrue(board.TileAt(2, 2).ContainsShip);
+            Assert.IsTrue(board.TileAt(2, 3).ContainsShip);
+            Assert.IsFalse(board.TileAt(2, 4).ContainsShip);
+            Assert.IsFalse(board.TileAt(2, 1).ContainsShip);
+            Assert.IsFalse(board.TileAt(1, 2).ContainsShip);
+            Assert.IsFalse(board.TileAt(3, 2).ContainsShip);
         }
 
         [TestMethod]
