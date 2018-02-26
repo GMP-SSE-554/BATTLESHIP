@@ -66,6 +66,13 @@ namespace Battleship.Models
             set { _isDestroyed = value; }
         }
 
+        bool _isBeingPlaced;
+        public bool IsBeingPlaced
+        {
+            get { return _isBeingPlaced; }
+            set { _isBeingPlaced = value; }
+        }
+
         SolidColorBrush _color;
         public SolidColorBrush Color
         {
