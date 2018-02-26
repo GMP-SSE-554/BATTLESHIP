@@ -99,7 +99,6 @@
     <Compile Include="Constants\Strings.cs" />
     <Compile Include="Models\Board.cs" />
     <Compile Include="Models\Computer.cs" />
-    <Compile Include="Models\Human.cs" />
     <Compile Include="Models\Instruction.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Ship.cs" />
@@ -115,11 +114,17 @@
     <Compile Include="ViewModels\InstructionViewModel.cs" />
     <Compile Include="ViewModels\ScoreboardViewModel.cs" />
     <Compile Include="ViewModels\TileViewModel.cs" />
+    <Compile Include="Views\BoardView.xaml.cs">
+      <DependentUpon>BoardView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScoreboardView.xaml.cs">
+      <DependentUpon>ScoreboardView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\HelpView.xaml.cs">
       <DependentUpon>HelpView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\BoardView.xaml.cs">
-      <DependentUpon>BoardView.xaml</DependentUpon>
+    <Compile Include="Views\GameView.xaml.cs">
+      <DependentUpon>GameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -151,11 +156,19 @@
     <Compile Include="ViewModels\Command.cs">
       <Generator>MSBuild:Compile</Generator>
     </Compile>
+    <Page Include="Views\BoardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ScoreboardView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\HelpView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\BoardView.xaml">
+    <Page Include="Views\GameView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

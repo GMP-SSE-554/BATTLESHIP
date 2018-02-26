@@ -68,7 +68,7 @@ namespace Battleship
         /// <param name="selectedItem"></param>
         private void SetContent(ListBoxItem selectedItem)
         {
-            var view = selectedItem.Equals(Home) ? typeof(BoardView) : typeof(HelpView);
+            var view = selectedItem.Equals(Home) ? typeof(GameView) : typeof(HelpView);
             CurrentView.Navigate(view);
             PageLocation.Text = selectedItem.Name;
             prevSelected = selectedItem;
