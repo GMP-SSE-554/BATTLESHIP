@@ -2,8 +2,13 @@
 
 namespace Battleship.Models
 {
-    public class Player
+    public abstract class Player
     {
         public List<Ship> PlayerShips = new List<Ship>();
+        
+        public Ship ShipBeingPlaced
+        {
+            get { return PlayerShips.Find(s => s.IsBeingPlaced); }
+        }
     }
 }
