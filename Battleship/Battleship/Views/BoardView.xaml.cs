@@ -46,6 +46,7 @@ namespace Battleship
                     // Binding tile properties.
                     var tileSource = ViewModel.HumanTiles.Where(e => e.Row.Equals(i) && e.Column.Equals(j)).First();
                     tile.SetBinding(Button.DataContextProperty, new Binding { Source = tileSource });
+                    tile.SetBinding(Button.IsPointerOverProperty, new Binding { Path = new PropertyPath(nameof(tileSource.IsMousedOver)), Mode = BindingMode.TwoWay });
                     tile.SetBinding(Button.BackgroundProperty, new Binding { Path = new PropertyPath(nameof(tileSource.FillColor)) });
                     tile.SetBinding(Button.BorderBrushProperty, new Binding { Path = new PropertyPath(nameof(tileSource.BorderColor)) });
                     tile.SetBinding(Button.CommandProperty, new Binding { Path = new PropertyPath(nameof(tileSource.OnClick)) });

@@ -23,6 +23,11 @@ namespace Battleship.ViewModels
 
         public int Column { get { return _tile.Column; } }
 
+        public Board Board
+        {
+            get { return _tile.Board; }
+        }
+
         bool _shipsBeingPlaced;
         public bool ShipsBeingPlaced
         {
@@ -50,6 +55,20 @@ namespace Battleship.ViewModels
             }
         }
 
+        public bool IsPreviewTile
+        {
+            get { return _tile.IsPreviewTile; }
+            set
+            {
+                _tile.IsPreviewTile = value;
+                //Could have constants file with tile colors for each state and
+                //a single UpdateColor method to update tile colors based on state
+                if (IsPreviewTile) FillColor = new SolidColorBrush(Windows.UI.Colors.Aquamarine);
+                else FillColor = new SolidColorBrush(Windows.UI.Colors.Blue);
+                OnPropertyChanged();
+            }
+        }
+
         public SolidColorBrush FillColor
         {
             get { return new SolidColorBrush(_tile.FillColor); }
@@ -70,14 +89,13 @@ namespace Battleship.ViewModels
             }
         }
 
-        bool _isMousedOver;
         public bool IsMousedOver
         {
-            get { return _isMousedOver; }
+            get { return _tile.IsMousedOver; }
             set
             {
-                _isMousedOver = value;
-                //_tileService.UpdatePreview();
+                _tile.IsMousedOver = value;
+                _tileService.PreviewShip(this);
                 OnPropertyChanged();
             }
         }

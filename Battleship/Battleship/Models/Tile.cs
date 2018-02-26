@@ -32,6 +32,23 @@ namespace Battleship.Models
             set { _containsShip = value; }
         }
 
+        bool _isMousedOver;
+        public bool IsMousedOver
+        {
+            get { return _isMousedOver; }
+            set { _isMousedOver = value; }
+        }
+
+        bool _isPreviewTile = false;
+        public bool IsPreviewTile
+        {
+            get { return _isPreviewTile; }
+            set
+            {
+                _isPreviewTile = value;
+            }
+        }
+
         bool _isChecked;
         public bool IsChecked
         {
