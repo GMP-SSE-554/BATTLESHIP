@@ -6,212 +6,51 @@
       mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <!-- Wide takes precedence over Narrow. -->
-                <VisualState x:Name="Wide">
-                    <VisualState.StateTriggers>
-                        <!-- When the window is >= 900, this state is triggered. -->
-                        <AdaptiveTrigger MinWindowWidth="900"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!-- Set the targets to the specified values when triggered. -->
-                        <Setter Target="BoardPanel.(Grid.RowSpan)" Value="2"/>
-                        <Setter Target="BoardPanel.(Grid.ColumnSpan)" Value="1"/>
-
-                        <Setter Target="ScoreboardPanel.(Grid.Row)" Value="0"/>
-                        <Setter Target="ScoreboardPanel.(Grid.Column)" Value="1"/>
-                        <Setter Target="ScoreboardPanel.(Grid.RowSpan)" Value="2"/>
-                        <Setter Target="ScoreboardPanel.(Grid.ColumnSpan)" Value="1"/>
-                        <Setter Target="ScoreboardPanel.Margin" Value="0,0,0,0"/>
-
-                        <Setter Target="EnemyShipListTitle.(Grid.Row)" Value="0"/>
-                        <Setter Target="EnemyShipListTitle.(Grid.Column)" Value="0"/>
-                        <Setter Target="EnemyShipListTitle.(Grid.RowSpan)" Value="1"/>
-                        <Setter Target="EnemyShipListTitle.(Grid.ColumnSpan)" Value="2"/>
-
-                        <Setter Target="TakenEnemyShips.(Grid.Row)" Value="1"/>
-                        <Setter Target="TakenEnemyShips.(Grid.Column)" Value="0"/>
-                        <Setter Target="TakenEnemyShips.(Grid.RowSpan)" Value="1"/>
-                        <Setter Target="TakenEnemyShips.(Grid.ColumnSpan)" Value="2"/>
-
-                        <Setter Target="PlayerShipListTitle.(Grid.Row)" Value="2"/>
-                        <Setter Target="PlayerShipListTitle.(Grid.Column)" Value="0"/>
-                        <Setter Target="PlayerShipListTitle.(Grid.RowSpan)" Value="1"/>
-                        <Setter Target="PlayerShipListTitle.(Grid.ColumnSpan)" Value="2"/>
-
-                        <Setter Target="TakenPlayerShips.(Grid.Row)" Value="3"/>
-                        <Setter Target="TakenPlayerShips.(Grid.Column)" Value="0"/>
-                        <Setter Target="TakenPlayerShips.(Grid.RowSpan)" Value="1"/>
-                        <Setter Target="TakenPlayerShips.(Grid.ColumnSpan)" Value="2"/>
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="Narrow">
-                    <VisualState.StateTriggers>
-                        <!-- When the window is >= 0, this state is triggered. -->
-                        <AdaptiveTrigger MinWindowWidth="0"/>
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!-- Set the targets to the specified values when triggered. -->
-                        <Setter Target="BoardPanel.(Grid.RowSpan)" Value="1"/>
-                        <Setter Target="BoardPanel.(Grid.ColumnSpan)" Value="2"/>
-
-                        <Setter Target="ScoreboardPanel.(Grid.Row)" Value="1"/>
-                        <Setter Target="ScoreboardPanel.(Grid.Column)" Value="0"/>
-                        <Setter Target="ScoreboardPanel.(Grid.RowSpan)" Value="1"/>
-                        <Setter Target="ScoreboardPanel.(Grid.ColumnSpan)" Value="2"/>
-                        <Setter Target="ScoreboardPanel.Margin" Value="44,0,0,0"/>
-
-                        <Setter Target="EnemyShipListTitle.(Grid.Row)" Value="0"/>
-                        <Setter Target="EnemyShipListTitle.(Grid.Column)" Value="0"/>
-                        <Setter Target="EnemyShipListTitle.(Grid.RowSpan)" Value="1"/>
-                        <Setter Target="EnemyShipListTitle.(Grid.ColumnSpan)" Value="1"/>
-
-                        <Setter Target="TakenEnemyShips.(Grid.Row)" Value="1"/>
-                        <Setter Target="TakenEnemyShips.(Grid.Column)" Value="0"/>
-                        <Setter Target="TakenEnemyShips.(Grid.RowSpan)" Value="3"/>
-                        <Setter Target="TakenEnemyShips.(Grid.ColumnSpan)" Value="1"/>
-
-                        <Setter Target="PlayerShipListTitle.(Grid.Row)" Value="0"/>
-                        <Setter Target="PlayerShipListTitle.(Grid.Column)" Value="1"/>
-                        <Setter Target="PlayerShipListTitle.(Grid.RowSpan)" Value="1"/>
-                        <Setter Target="PlayerShipListTitle.(Grid.ColumnSpan)" Value="1"/>
-
-                        <Setter Target="TakenPlayerShips.(Grid.Row)" Value="1"/>
-                        <Setter Target="TakenPlayerShips.(Grid.Column)" Value="1"/>
-                        <Setter Target="TakenPlayerShips.(Grid.RowSpan)" Value="3"/>
-                        <Setter Target="TakenPlayerShips.(Grid.ColumnSpan)" Value="1"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-        <ScrollViewer x:Name="MainPageScrollView"
-                      HorizontalScrollBarVisibility="Auto"
-                      VerticalScrollBarVisibility="Auto">
-            <Grid x:Name="MainView">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="325"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="0.75*"/>
-                </Grid.ColumnDefinitions>
-                <RelativePanel x:Name="BoardPanel" 
-                               Grid.Row="0"
-                               Grid.Column="0" 
-                               Margin="44,0,0,0">
-                    <Button x:Name="ChangeShipOrientation"
-                            FontFamily="Segoe MDL2 Assets"
-                            Content="&#xE7AD;"
-                            FontSize="24"
-                            Background="White"
-                            Command="{Binding RotateShip}"
-                            RelativePanel.AlignLeftWithPanel="True"
-                            RelativePanel.AlignTopWithPanel="True"/>
-                    <TextBlock x:Name="GameTitle"
-                               Text="Battleship Game Board"
-                               FontSize="20"
-                               Margin="0,10,0,0"
-                               Height="30"
-                               RelativePanel.AlignTopWith="ChangeShipOrientation"
-                               RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                    <Viewbox x:Name="BoardBox"
-                             Margin="25,50,25,50"
-                             Stretch="Uniform"
-                             RelativePanel.AlignLeftWithPanel="True"
-                             RelativePanel.AlignTopWith="GameTitle"
-                             RelativePanel.AlignRightWithPanel="True"
-                             RelativePanel.AlignBottomWith="UserNotifications">
-                        <Grid x:Name="Board"
-                              MinWidth="500"
-                              MinHeight="500"
-                              BorderBrush="SlateGray"
-                              BorderThickness="1">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="*"/> <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/> <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/> <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/> <RowDefinition Height="*"/>
-                                <RowDefinition Height="*"/> <RowDefinition Height="*"/>
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
-                            </Grid.ColumnDefinitions>
-                        </Grid>
-                    </Viewbox>
-                    <TextBlock x:Name="UserNotifications"
-                               Text="Placeholder to be binded - Actions, win message, etc."
-                               FontSize="20"
-                               Margin="0,0,0,10"
-                               Height ="30"
-                               RelativePanel.AlignBottomWithPanel="True"
-                               RelativePanel.AlignHorizontalCenterWithPanel="True"/>
-                </RelativePanel>
-                <RelativePanel x:Name="ScoreboardPanel">
-                    <Grid x:Name="Scoreboard"
-                          Margin="0,0,0,0"
-                          RelativePanel.AlignLeftWithPanel="True"
-                          RelativePanel.AlignTopWithPanel="True"
-                          RelativePanel.AlignRightWithPanel="True"
-                          RelativePanel.AlignBottomWithPanel="True">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1*"/>
-                            <ColumnDefinition Width="1*"/>
-                        </Grid.ColumnDefinitions>
-                        <TextBlock x:Name="EnemyShipListTitle"
-                                   Text="Taken Enemy Ships"
-                                   FontSize="20"
-                                   Margin="0,10,0,0"
-                                   Height="30"
-                                   HorizontalAlignment="Center"/>
-                        <ListBox x:Name="TakenEnemyShips"
-                                 ItemsSource="{Binding ComputerShips}"
-                                 Margin="25,10,25,50"
-                                 MinHeight="200"
-                                 BorderBrush="SlateGray" 
-                                 BorderThickness="2"
-                                 Background="FloralWhite">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Name}"
-                                               Foreground="{Binding Color}"/>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                        <TextBlock x:Name="PlayerShipListTitle"
-                                   Text="Taken Player Ships"
-                                   FontSize="20"
-                                   Margin="0,0,0,0"
-                                   Height="30"
-                                   HorizontalAlignment="Center"/>
-                        <ListBox x:Name="TakenPlayerShips"
-                                 ItemsSource="{Binding ComputerShips}"
-                                 Margin="25,10,25,50"
-                                 MinHeight="200"
-                                 BorderBrush="SlateGray"
-                                 BorderThickness="2"
-                                 Background="FloralWhite">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Name}"
-                                               Foreground="{Binding Color}"/>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Grid>
-                </RelativePanel>
-            </Grid>
-        </ScrollViewer>
+        <RelativePanel x:Name="BoardPanel" 
+                       Grid.Column="0" 
+                       Margin="44,0,0,0">
+            <TextBlock x:Name="GameTitle"
+                       Text="Battleship Game Board"
+                       FontSize="20"
+                       Margin="0,10,0,0"
+                       Height="30"
+                       RelativePanel.AlignTopWithPanel="True" 
+                       RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+            <Viewbox x:Name="BoardBox"
+                     Margin="25,50,25,50"
+                     Stretch="Uniform"
+                     RelativePanel.AlignLeftWithPanel="True"
+                     RelativePanel.AlignTopWith="GameTitle"
+                     RelativePanel.AlignRightWithPanel="True"
+                     RelativePanel.AlignBottomWithPanel="True">
+                <Grid x:Name="Board"
+                      MinWidth="500"
+                      MinHeight="500"
+                      BorderBrush="SlateGray"
+                      BorderThickness="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/> <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/> <RowDefinition Height="*"/> 
+                        <RowDefinition Height="*"/> <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/> <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/> <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/> <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+            </Viewbox>
+            <TextBlock x:Name="UserNotifications"
+                       Text="Placeholder to be binded - Actions, win message, etc."
+                       FontSize="20"
+                       Margin="0,0,0,10"
+                       Height ="30"
+                       RelativePanel.AlignBottomWithPanel="True"
+                       RelativePanel.AlignHorizontalCenterWithPanel="True"/>
+        </RelativePanel>
     </Grid>
 </Page>

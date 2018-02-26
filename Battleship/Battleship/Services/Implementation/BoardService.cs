@@ -1,6 +1,5 @@
 ﻿using Battleship.Constants;
 using Battleship.Models;
-using System;
 using Windows.UI;
 using Windows.UI.Xaml.Media;
 
@@ -27,21 +26,8 @@ namespace Battleship.Services
                     });
                 }
             }
-        }
-
-        /// <summary>
-        /// Adds the player ships.
-        /// </summary>
-        /// <param name="player">The player.</param>
-        public void AddPlayerShips(Player player)
-        {
-            if (player != null)
-            {
-                foreach (ShipType ship in Enum.GetValues(typeof(ShipType)))
-                {
-                    player.PlayerShips.Add(new Ship(ship));
-                }
-            }
+            board.NumRows = NumericalConstants.BOARD_ROWS;
+            board.NumColumns = NumericalConstants.BOARD_COLUMNS;
         }
     }
 }

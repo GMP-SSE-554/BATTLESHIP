@@ -4,11 +4,18 @@ namespace Battleship.Models
 {
     public class Board
     {
-        bool _isHumanBoard;
-        public bool IsHumanBoard
+        int _numRows;
+        public int NumRows
         {
-            get { return _isHumanBoard; }
-            set { _isHumanBoard = value; }
+            get { return _numRows; }
+            set { _numRows = value; }
+        }
+
+        int _numColumns;
+        public int NumColumns
+        {
+            get { return _numColumns; }
+            set { _numColumns = value; }
         }
 
         public List<Tile> Tiles = new List<Tile>();

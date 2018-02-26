@@ -1,0 +1,73 @@
+﻿<Page x:Class="Battleship.GameView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <!-- Wide takes precedence over Narrow. -->
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <!-- When the window is >= 900, this state is triggered. -->
+                        <AdaptiveTrigger MinWindowWidth="900"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Set the targets to the specified values when triggered. -->
+                        <Setter Target="BoardView.(Grid.RowSpan)" Value="2"/>
+                        <Setter Target="BoardView.(Grid.ColumnSpan)" Value="1"/>
+
+                        <Setter Target="ScoreboardView.(Grid.Row)" Value="0"/>
+                        <Setter Target="ScoreboardView.(Grid.Column)" Value="1"/>
+                        <Setter Target="ScoreboardView.(Grid.RowSpan)" Value="2"/>
+                        <Setter Target="ScoreboardView.(Grid.ColumnSpan)" Value="1"/>
+                        <Setter Target="ScoreboardView.Margin" Value="0,0,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <!-- When the window is >= 0, this state is triggered. -->
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!-- Set the targets to the specified values when triggered. -->
+                        <Setter Target="BoardView.(Grid.RowSpan)" Value="1"/>
+                        <Setter Target="BoardView.(Grid.ColumnSpan)" Value="2"/>
+
+                        <Setter Target="ScoreboardView.(Grid.Row)" Value="1"/>
+                        <Setter Target="ScoreboardView.(Grid.Column)" Value="0"/>
+                        <Setter Target="ScoreboardView.(Grid.RowSpan)" Value="1"/>
+                        <Setter Target="ScoreboardView.(Grid.ColumnSpan)" Value="2"/>
+                        <Setter Target="ScoreboardView.Margin" Value="44,0,0,0"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <ScrollViewer x:Name="MainPageScrollView"
+                      HorizontalScrollBarVisibility="Auto"
+                      VerticalScrollBarVisibility="Auto">
+            <Grid x:Name="MainView">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="325"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="0.75*"/>
+                </Grid.ColumnDefinitions>
+                <Page x:Name="BoardView">
+                    <Page.Content>
+                        <Frame x:Name="CurrentBoardView"/>
+                    </Page.Content>
+                </Page>
+                <Page x:Name="ScoreboardView">
+                    <Page.Content>
+                        <Frame x:Name="CurrentScoreboardView"/>
+                    </Page.Content>
+                </Page>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+</Page>
