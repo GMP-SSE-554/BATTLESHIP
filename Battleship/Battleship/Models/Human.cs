@@ -1,7 +1,7 @@
 ﻿
 namespace Battleship.Models
 {
-    public class Computer : Player
+    public class Human : Player
     {
     }
 }
