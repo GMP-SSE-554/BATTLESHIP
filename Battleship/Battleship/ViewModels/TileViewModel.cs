@@ -77,7 +77,7 @@ namespace Battleship.ViewModels
             set
             {
                 _isMousedOver = value;
-                _tileService.UpdatePreview();
+                //_tileService.UpdatePreview();
                 OnPropertyChanged();
             }
         }

@@ -100,12 +100,8 @@
       <DependentUpon>UnitTestApp.xaml</DependentUpon>
     </Compile>
     <Compile Include="UnitTest\BoardServiceTests.cs" />
-<<<<<<< HEAD
     <Compile Include="UnitTest\TileServiceTests.cs" />
-=======
     <Compile Include="UnitTest\HelpServiceTests.cs" />
-    <Compile Include="UnitTest\ShipServiceTests.cs" />
->>>>>>> master
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="UnitTestApp.xaml">

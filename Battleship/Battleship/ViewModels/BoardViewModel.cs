@@ -1,15 +1,12 @@
 ﻿using Battleship.Models;
 using Battleship.Services;
 using System.Collections.Generic;
-<<<<<<< HEAD
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Windows.UI;
-=======
 using System.Windows.Input;
->>>>>>> master
 
 namespace Battleship.ViewModels
 {
@@ -48,7 +45,6 @@ namespace Battleship.ViewModels
             }
         }
 
-<<<<<<< HEAD
         public void PreviewShip(Ship ship)
         {
             int rowOffset = 0;
@@ -61,8 +57,6 @@ namespace Battleship.ViewModels
             }
         }
 
-        public int NumRows { get { return _board.NumRows; } }
-=======
         public List<TileViewModel> HumanTiles { get; } = new List<TileViewModel>();
 
         public List<TileViewModel> ComputerTiles { get; } = new List<TileViewModel>();
@@ -70,9 +64,7 @@ namespace Battleship.ViewModels
         public Player Human { get { return _human; } }
 
         public Player Computer { get { return _computer; } }
->>>>>>> master
 
-        public int NumColumns { get { return _board.NumColumns; } }
         public Board HumanBoard { get { return _humanBoard; } }
 
         public List<TileViewModel> Tiles { get; } = new List<TileViewModel>();
