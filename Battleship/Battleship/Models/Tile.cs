@@ -4,6 +4,13 @@ namespace Battleship.Models
 {
     public class Tile
     {
+        Board _board;
+        public Board Board
+        {
+            get { return _board; }
+            set { _board = value; }
+        }
+
         int _row;
         public int Row
         {

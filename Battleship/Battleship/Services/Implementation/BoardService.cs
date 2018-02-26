@@ -21,6 +21,7 @@ namespace Battleship.Services
                     board.Tiles.Add(new Tile() {
                         Row = i,
                         Column = j,
+                        Board = board,
                         FillColor = Colors.FloralWhite,
                         BorderColor = Colors.SlateGray
                     });
@@ -40,19 +41,6 @@ namespace Battleship.Services
                 {
                     player.PlayerShips.Add(new Ship(ship));
                 }
-            }
-        }
-
-        public void PlaceShip(Board board, Ship ship)
-        {
-            int rowOffset = 0;
-            int columnOffset = 0;
-            for (int i = 0; i < ship.Length; i++)
-            {
-                board.tileAt(ship.Row + rowOffset, ship.Column + columnOffset).ContainsShip = true;
-
-                if (ship.IsHorizontal) { columnOffset += 1; }
-                else { rowOffset += 1; }
             }
         }
     }

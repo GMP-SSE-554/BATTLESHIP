@@ -1,4 +1,5 @@
 ﻿using Battleship.Models;
+using Battleship.Services;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -10,16 +11,25 @@ namespace Battleship.ViewModels
     public class TileViewModel : INotifyPropertyChanged
     {
         Tile _tile;
-
+        TileService _tileService;
+        
         public TileViewModel(Tile tile)
         {
             _tile = tile;
+            _tileService = new TileService();
         }
-        
+
         public int Row { get { return _tile.Row; } }
-        
+
         public int Column { get { return _tile.Column; } }
-        
+
+        bool _shipsBeingPlaced;
+        public bool ShipsBeingPlaced
+        {
+            get { return _shipsBeingPlaced; }
+            set { _shipsBeingPlaced = value; }
+        }
+
         public bool ContainsShip
         {
             get { return _tile.ContainsShip; }
@@ -29,7 +39,7 @@ namespace Battleship.ViewModels
                 OnPropertyChanged();
             }
         }
-        
+
         public bool IsChecked
         {
             get { return _tile.IsChecked; }
@@ -39,7 +49,7 @@ namespace Battleship.ViewModels
                 OnPropertyChanged();
             }
         }
-        
+
         public SolidColorBrush FillColor
         {
             get { return new SolidColorBrush(_tile.FillColor); }
@@ -49,7 +59,7 @@ namespace Battleship.ViewModels
                 OnPropertyChanged();
             }
         }
-        
+
         public SolidColorBrush BorderColor
         {
             get { return new SolidColorBrush(_tile.BorderColor); }
@@ -60,10 +70,31 @@ namespace Battleship.ViewModels
             }
         }
 
-        ICommand _changeFill;
-        public ICommand ChangeFill
+        bool _isMousedOver;
+        public bool IsMousedOver
         {
-            get { return _changeFill ?? (_changeFill = new Command(p => true, a => Change())); }
+            get { return _isMousedOver; }
+            set
+            {
+                _isMousedOver = value;
+                //_tileService.UpdatePreview();
+                OnPropertyChanged();
+            }
+        }
+
+        ICommand _changeFill;
+        public ICommand OnClick
+        {
+            get
+            {
+                if (!_shipsBeingPlaced)
+                {
+                    return _changeFill ?? (_changeFill = new Command(p => true, a => Change()));
+                } else
+                {
+                    return _changeFill ?? (_changeFill = new Command(p => true, a => Change()));
+                }
+            }
         }
 
         /// <summary>
