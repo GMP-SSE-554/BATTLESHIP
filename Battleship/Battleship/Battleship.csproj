@@ -98,10 +98,7 @@
     <Compile Include="Constants\NumericalConstants.cs" />
     <Compile Include="Constants\Strings.cs" />
     <Compile Include="Models\Board.cs" />
-    <Compile Include="Models\Computer.cs" />
-    <Compile Include="Models\Human.cs" />
     <Compile Include="Models\Instruction.cs" />
-    <Compile Include="Models\Player.cs" />
     <Compile Include="Models\Ship.cs" />
     <Compile Include="Models\ShipType.cs" />
     <Compile Include="Models\Tile.cs" />
@@ -113,7 +110,6 @@
     <Compile Include="Services\Interface\ITileService.cs" />
     <Compile Include="ViewModels\BoardViewModel.cs" />
     <Compile Include="ViewModels\InstructionViewModel.cs" />
-    <Compile Include="ViewModels\ScoreboardViewModel.cs" />
     <Compile Include="ViewModels\TileViewModel.cs" />
     <Compile Include="Views\HelpView.xaml.cs">
       <DependentUpon>HelpView.xaml</DependentUpon>

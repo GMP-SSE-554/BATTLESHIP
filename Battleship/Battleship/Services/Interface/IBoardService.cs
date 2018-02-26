@@ -13,7 +13,7 @@ namespace Battleship.Services
         /// <summary>
         /// Adds the player ships.
         /// </summary>
-        /// <param name="player">The player.</param>
-        void AddPlayerShips(Player player);
+        /// <param name="board">The board.</param>
+        void AddPlayerShips(Board board);
     }
 }

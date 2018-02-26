@@ -32,14 +32,14 @@ namespace Battleship.Services
         /// <summary>
         /// Adds the player ships.
         /// </summary>
-        /// <param name="player">The player.</param>
-        public void AddPlayerShips(Player player)
+        /// <param name="board">The board.</param>
+        public void AddPlayerShips(Board board)
         {
-            if (player != null)
+            if (board != null)
             {
                 foreach (ShipType ship in Enum.GetValues(typeof(ShipType)))
                 {
-                    player.PlayerShips.Add(new Ship(ship));
+                    board.Ships.Add(new Ship(ship));
                 }
             }
         }

@@ -107,7 +107,7 @@
                             FontSize="24"
                             Background="White"
                             Command="{Binding RotateShip}"
-                            RelativePanel.AlignLeftWithPanel="True"
+                            RelativePanel.AlignRightWithPanel="True"
                             RelativePanel.AlignTopWithPanel="True"/>
                     <TextBlock x:Name="GameTitle"
                                Text="Battleship Game Board"
