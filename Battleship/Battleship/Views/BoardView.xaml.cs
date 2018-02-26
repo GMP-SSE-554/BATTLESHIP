@@ -48,7 +48,6 @@ namespace Battleship
                     tile.SetBinding(Button.BackgroundProperty, new Binding { Path = new PropertyPath(nameof(tileSource.FillColor)) });
                     tile.SetBinding(Button.BorderBrushProperty, new Binding { Path = new PropertyPath(nameof(tileSource.BorderColor)) });
                     tile.SetBinding(Button.CommandProperty, new Binding { Path = new PropertyPath(nameof(tileSource.ChangeFill)) });
-
                     // Adding tile to parent view.
                     Board.Children.Add(tile);
                 }

@@ -28,33 +28,5 @@ namespace Battleship.Services
             board.NumRows = NumericalConstants.BOARD_ROWS;
             board.NumColumns = NumericalConstants.BOARD_COLUMNS;
         }
-
-        public void PlaceShip(Board board, Ship ship)
-        {
-            int rowOffset = 0;
-            int columnOffset = 0;
-            for (int i = 0; i < ship.Length; i++)
-            {
-                board.tileAt(ship.Row + rowOffset, ship.Column + columnOffset).ContainsShip = true;
-
-                if (ship.IsHorizontal) { columnOffset += 1; }
-                else { rowOffset += 1; }
-            }
-        }
-
-        public bool ShipWillIntersect(Board board, Ship ship)
-        {
-            int rowOffset = 0;
-            int columnOffset = 0;
-            for (int i = 0; i < ship.Length; i++)
-            {
-                if (board.tileAt(ship.Row + rowOffset, ship.Column + columnOffset).ContainsShip) return true;
-
-                if (ship.IsHorizontal) { columnOffset += 1; }
-                else { rowOffset += 1; }
-            }
-
-            return false;
-        }
     }
 }
